@@ -13,12 +13,7 @@ type Path struct {
 }
 
 func (p *Path) Push(n int) {
-	if p.count >= len(p.nodes) {
-		nodes := make([]int, len(p.nodes)*2)
-		copy(nodes, p.nodes)
-		p.nodes = nodes
-	}
-	p.nodes[p.count] = n
+    p.nodes = append(p.nodes[:p.count], n)
 	p.set[n] = 1
 	p.count++
 	p.last++
